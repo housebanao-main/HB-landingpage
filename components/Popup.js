@@ -1,4 +1,3 @@
-// Popup Component
 import React, { useEffect, useState } from "react";
 import { usePopup } from "../context/PopupContext";
 import { IoMdContact } from "react-icons/io";
@@ -39,15 +38,8 @@ const Popup = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
-    if (name === "name" && !/^[a-zA-Z\s]*$/.test(value)) {
-      // Allow only alphabets and spaces for name
-      return;
-    }
-
-    if (name === "phoneNumber" && !/^\d*$/.test(value)) {
-      // Allow only numbers for phoneNumber
-      return;
-    }
+    if (name === "name" && !/^[a-zA-Z\s]*$/.test(value)) return;
+    if (name === "phoneNumber" && !/^\d*$/.test(value)) return;
 
     setFormData({ ...formData, [name]: value });
   };
@@ -89,7 +81,7 @@ const Popup = () => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="max-w-lg mx-auto py-8 px-6 space-y-6 bg-white rounded-lg relative shadow-xl">
+      <div className="w-full max-w-sm sm:max-w-md mx-4 sm:mx-auto py-6 px-4 sm:px-6 bg-white rounded-lg relative shadow-lg">
         <button
           onClick={closePopup}
           className="absolute top-4 right-4 text-gray-700 text-xl font-bold"
@@ -98,12 +90,13 @@ const Popup = () => {
           X
         </button>
 
-        <h1 className="text-center text-2xl font-bold text-gray-800">
+        <h1 className="text-center text-xl sm:text-2xl font-bold text-gray-800 mb-4">
           Get your cost estimate for free
         </h1>
 
         <div className="w-full space-y-4">
-          {[{
+          {[
+            {
               name: "name",
               placeholder: "Name",
               value: formData.name,
@@ -131,7 +124,10 @@ const Popup = () => {
               icon: <MdLocationOn />,
             },
           ].map((field, index) => (
-            <div key={index} className="border border-gray-300 rounded-full flex items-center p-3">
+            <div
+              key={index}
+              className="border border-gray-300 rounded-full flex items-center p-3"
+            >
               <span className="pl-3">{field.icon}</span>
               <input
                 name={field.name}
@@ -145,11 +141,11 @@ const Popup = () => {
           ))}
         </div>
 
-        <div className="w-full flex flex-col items-center gap-4">
+        <div className="w-full flex flex-col items-center gap-4 mt-6">
           <button
             onClick={handleSubmit}
             disabled={loading}
-            className="bg-blue-600 text-white w-full py-3 rounded-md shadow-lg hover:opacity-90 transition"
+            className="bg-blue-600 text-white w-full py-2 sm:py-3 rounded-md shadow-lg hover:opacity-90 transition"
           >
             {loading ? "Submitting..." : "Get your cost estimate"}
           </button>
@@ -157,7 +153,7 @@ const Popup = () => {
             href="https://api.whatsapp.com/send?phone=9810432124"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-green-500 text-white w-full py-3 flex items-center justify-center rounded-md shadow-lg hover:opacity-90 transition gap-2"
+            className="bg-green-500 text-white w-full py-2 sm:py-3 flex items-center justify-center rounded-md shadow-lg hover:opacity-90 transition gap-2"
           >
             <img
               src="/service/whatsapp-logo.png"
@@ -169,13 +165,13 @@ const Popup = () => {
         </div>
 
         {successMessage && (
-          <p className="text-green-500 text-sm text-center">{successMessage}</p>
+          <p className="text-green-500 text-sm text-center mt-2">{successMessage}</p>
         )}
         {errorMessage && (
-          <p className="text-red-500 text-sm text-center">{errorMessage}</p>
+          <p className="text-red-500 text-sm text-center mt-2">{errorMessage}</p>
         )}
 
-        <p className="w-full text-center text-sm text-gray-600 mt-4">
+        <p className="w-full text-center text-xs sm:text-sm text-gray-600 mt-4">
           By submitting this form, you agree to the privacy policy and terms of use.
         </p>
       </div>

@@ -17,9 +17,8 @@ const Footer = () => {
         </div>
 
         {/* About Us */}
-        <div className="text-white ml-20">
-          <h3 className="text-lg  font-semibold mb-2">About Us</h3>
-         
+        <div className="text-white">
+          <h3 className="text-lg font-semibold mb-2">About Us</h3>
           <ul className="space-y-2 text-sm mt-2">
             <li><Link href="#services">Our Services</Link></li>
             <li><Link href="#quickservices">Quick Services</Link></li>
@@ -29,7 +28,7 @@ const Footer = () => {
         </div>
 
         {/* Social Links */}
-        <div className="text-white ml-20">
+        <div className="text-white">
           <h3 className="text-lg font-semibold mb-2">Follow Us</h3>
           <ul className="space-y-2 text-sm">
             <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>

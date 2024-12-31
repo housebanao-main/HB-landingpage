@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 23, "column": 0}, "map": {"version":3,"sources":["file:///home/anonymous/Coding/HB-Page/context/PopupContext.js"],"sourcesContent":["import { createContext, useContext, useState } from \"react\";\n\nconst PopupContext = createContext();\n\nexport const PopupProvider = ({ children }) => {\n  const [isPopupVisible, setIsPopupVisible] = useState(false);\n\n  const openPopup = () => {\n    setIsPopupVisible(true);\n  };\n\n  const closePopup = () => {\n    setIsPopupVisible(false);\n  };\n\n  return (\n    <PopupContext.Provider value={{ isPopupVisible, openPopup, closePopup }}>\n      {children}\n    </PopupContext.Provider>\n  );\n};\n\nexport const usePopup = () => useContext(PopupContext);\n"],"names":[],"mappings":";;;;;AAAA;;;AAEA,MAAM,6BAAe,CAAA,GAAA,mGAAA,CAAA,gBAAa,AAAD;AAE1B,MAAM,gBAAgB,CAAC,EAAE,QAAQ,EAAE;IACxC,MAAM,CAAC,gBAAgB,kBAAkB,GAAG,CAAA,GAAA,mGAAA,CAAA,WAAQ,AAAD,EAAE;IAErD,MAAM,YAAY;QAChB,kBAAkB;IACpB;IAEA,MAAM,aAAa;QACjB,kBAAkB;IACpB;IAEA,qBACE,qKAAC,aAAa,QAAQ;QAAC,OAAO;YAAE;YAAgB;YAAW;QAAW;kBACnE;;;;;;AAGP;AAEO,MAAM,WAAW,IAAM,CAAA,GAAA,mGAAA,CAAA,aAAU,AAAD,EAAE"}},
+    {"offset": {"line": 54, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 60, "column": 0}, "map": {"version":3,"sources":["file:///home/anonymous/Coding/HB-Page/pages/_app.js"],"sourcesContent":["import '../styles/globals.css';\nimport { PopupProvider } from '../context/PopupContext';\n\nfunction MyApp({ Component, pageProps }) {\n  return (\n    <PopupProvider>\n      <Component {...pageProps} />\n    </PopupProvider>\n  );\n}\n\nexport default MyApp;\n"],"names":[],"mappings":";;;;AACA;;;;AAEA,SAAS,MAAM,EAAE,SAAS,EAAE,SAAS,EAAE;IACrC,qBACE,qKAAC,gHAAA,CAAA,gBAAa;kBACZ,cAAA,qKAAC;YAAW,GAAG,SAAS;;;;;;;;;;;AAG9B;uCAEe"}},
+    {"offset": {"line": 84, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
